@@ -7,7 +7,22 @@
     <title>Painel Vendedor</title>
 </head>
 <body>
-    <H1>Painel Vendedor</H1>
+<H1>Painel Vendedor</H1>
+<p>{{ Auth::user()->name }}</p>
+
+<x-dropdown-link :href="route('profile.edit')">
+    {{ __('Profile') }}
+</x-dropdown-link>
+
+<form method="POST" action="{{ route('logout') }}">
+    @csrf
+
+    <x-dropdown-link :href="route('logout')"
+            onclick="event.preventDefault();
+                        this.closest('form').submit();">
+        {{ __('Sair') }}
+    </x-dropdown-link>
+</form>
 
 </body>
 </html>
